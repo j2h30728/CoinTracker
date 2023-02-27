@@ -1,11 +1,17 @@
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import Coins from "../components/Coins";
 
 export default function Home() {
   return (
-    <Container>
-      <Coins />
-    </Container>
+    <>
+      <Helmet>
+        <title>Home | CoinTracker</title>
+      </Helmet>
+      <Container>
+        <Coins />
+      </Container>
+    </>
   );
 }
 

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useQuery } from "@tanstack/react-query";
 import { Outlet, useLocation, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -18,6 +19,15 @@ export default function Detail() {
   );
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name
+            ? `${state.name} | CoinTracker`
+            : info.isLoading
+            ? "Loading..."
+            : `${info.data?.name} | CoinTracker`}
+        </title>
+      </Helmet>
       <Title
         text={
           state?.name

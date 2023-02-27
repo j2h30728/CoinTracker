@@ -102,7 +102,7 @@ const Tab = styled.div<{ isActive: boolean }>`
 `;
 const BackBtn = styled(Link)`
   position: absolute;
-  top: 105px;
+  top: 15vh;
   svg {
     width: 40px;
     height: 40px;
