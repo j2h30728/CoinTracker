@@ -1,6 +1,5 @@
 import { Link, useMatch } from "react-router-dom";
 import styled from "styled-components";
-import { HiChevronDoubleLeft } from "react-icons/hi2";
 import { CoinProps } from "../types/types";
 import baseURL from "../baseURL";
 
@@ -10,9 +9,6 @@ export default function Coin({ coinId, state, info, ticker }: CoinProps) {
 
   return (
     <>
-      <BackBtn to={`${baseURL}`}>
-        <HiChevronDoubleLeft />
-      </BackBtn>
       {info.isLoading ? (
         <Loader>Loaing...</Loader>
       ) : (
@@ -99,12 +95,4 @@ const Tab = styled.div<{ isActive: boolean }>`
   color: ${props =>
     props.isActive ? props.theme.accentColor : props.theme.textColor};
   text-transform: uppercase;
-`;
-const BackBtn = styled(Link)`
-  position: absolute;
-  top: 15vh;
-  svg {
-    width: 40px;
-    height: 40px;
-  }
 `;

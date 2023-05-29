@@ -1,20 +1,29 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { isDarkState } from "../atom";
 import { HiSun, HiMoon } from "react-icons/hi2";
+import baseURL from "../baseURL";
+import { HiChevronDoubleLeft } from "react-icons/hi2";
 
 export default function Header() {
   const [isDark, setIsDark] = useRecoilState(isDarkState);
   const handleDarkmode = () => {
     setIsDark(!isDark);
   };
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <Container>
       <Title to="">Coin Tracker</Title>
       <DarkmodeBtn onClick={handleDarkmode}>
         {isDark ? <HiSun /> : <HiMoon />}
       </DarkmodeBtn>
+      {pathname !== "/CoinTracker" && (
+        <BackBtn to={`${baseURL}`}>
+          <HiChevronDoubleLeft />
+        </BackBtn>
+      )}
     </Container>
   );
 }
@@ -39,5 +48,13 @@ const DarkmodeBtn = styled.button`
     width: 30px;
     height: 30px;
     fill: ${props => props.theme.textColor};
+  }
+`;
+const BackBtn = styled(Link)`
+  position: absolute;
+  top: 15vh;
+  svg {
+    width: 40px;
+    height: 40px;
   }
 `;
